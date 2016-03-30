@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/VirtualMusicBox.iml" filepath="$PROJECT_DIR$/.idea/VirtualMusicBox.iml" />
       <module fileurl="file://$PROJECT_DIR$/VirtualMusicBox.iml" filepath="$PROJECT_DIR$/VirtualMusicBox.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
