@@ -6,6 +6,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        style="@style/CardView.Dark"
         android:layout_width="match_parent"
         android:layout_margin="10dp"
         android:layout_height="62dp"
@@ -28,22 +29,22 @@
 
             <TextView
                 android:id="@+id/tv_text"
-
                 android:layout_toRightOf ="@+id/iv_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.86"
-                android:layout_gravity="center" >
+                android:layout_gravity="center"
+                android:textColor="#ffffff">
             </TextView>
 
-            <ImageView
-                android:id="@+id/iv_image"
+            <CheckBox
+                android:id="@+id/cb_voting_button"
                 android:layout_weight="0.1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/btn_check_buttonless_off">
-            </ImageView>
+                android:button="@drawable/checkbox_custom_style">
+            </CheckBox>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
