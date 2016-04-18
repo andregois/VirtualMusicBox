@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "VOTE NA SUA MUSICA");
+        adapter.addFragment(new OneFragment(), "VOTAÇÃO");
         adapter.addFragment(new TwoFragment(), "RANKING");
-        adapter.addFragment(new ThreeFragment(), "SEUS VOTOS");
+        adapter.addFragment(new ThreeFragment(), "MEUS VOTOS");
         viewPager.setAdapter(adapter);
     }
 
