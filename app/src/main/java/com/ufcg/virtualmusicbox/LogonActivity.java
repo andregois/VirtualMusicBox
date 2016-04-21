@@ -3,6 +3,7 @@ package com.ufcg.virtualmusicbox;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,7 +25,6 @@ public class LogonActivity extends CaptureActivity {
                 IntentIntegrator integrator = new IntentIntegrator(LogonActivity.this);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 integrator.setPrompt("Escaneamento do QR Code");
-                integrator.setCaptureActivity(LogonActivity.class);
                 integrator.setCameraId(0);
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(false);
@@ -40,7 +40,7 @@ public class LogonActivity extends CaptureActivity {
             if(result.getContents() == null) {
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Qr Code escaneado: " + result.getContents(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Qr Code: " + result.getContents(), Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, MainActivity.class));
             }
         } else {
