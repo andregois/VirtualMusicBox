@@ -38,7 +38,7 @@
             </TextView>
 
             <CheckBox
-                android:id="@+id/cb_voting_button"
+                android:id="@+id/cb_voting"
                 android:layout_weight="0.1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
