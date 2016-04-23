@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
     public String conectToServer(HttpGet httpGet) {
         StringBuilder builder = new StringBuilder();
         HttpClient client = new DefaultHttpClient();
-//        HttpGet httpGet = new HttpGet("https://bugzilla.mozilla.org/rest/bug?assigned_to=lhenry@mozilla.com");
         try {
             HttpResponse response = client.execute(httpGet);
             StatusLine statusLine = response.getStatusLine();
