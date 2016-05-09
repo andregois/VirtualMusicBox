@@ -12,24 +12,24 @@
 
 
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:id="@+id/imageView"
         android:src="@drawable/btn_scan_screen"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_name"
-        android:id="@+id/textView"
-        android:layout_marginTop="45dp"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="42dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="false"
+        android:layout_marginTop="328dp"
+        android:textColor="#9b9b9b"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        android:text="Clique para logar"
+        android:textSize="16sp"/>
+
+
 
 </RelativeLayout>

@@ -1,19 +1,20 @@
 package com.ufcg.virtualmusicbox;
 
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.ufcg.virtualmusicbox.Model.Changeable;
+import com.ufcg.virtualmusicbox.Model.Music;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> implements Changeable {
     private ArrayList<Music> mDataset;
 
     // Provide a reference to the views for each data item
@@ -21,15 +22,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView mCardView;
-        public TextView mTextView;
-        public ImageView mImageView;
+        public TextView mTitle;
+        public TextView mSinger;
+        public TextView mVotes;
         public CheckBox mCheck;
+
         public MyViewHolder(View v) {
             super(v);
 
             mCardView = (CardView) v.findViewById(R.id.card_view);
-            mTextView = (TextView) v.findViewById(R.id.tv_text);
-            mImageView = (ImageView) v.findViewById(R.id.iv_image);
+            mTitle = (TextView) v.findViewById(R.id.tv_title);
+            mSinger = (TextView) v.findViewById(R.id.tv_singer);
+            mVotes = (TextView) v.findViewById(R.id.tv_votes);
             mCheck = (CheckBox) v.findViewById(R.id.cb_voting);
         }
     }
@@ -57,28 +61,56 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.mCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!holder.mCheck.isChecked()){
+                if (!holder.mCheck.isChecked()) {
                     mDataset.get(position).votos--;
                     MainActivity.setVoted(mDataset.get(position), false);
-                    holder.mTextView.setText(mDataset.get(position).cantor + " - "+ mDataset.get(position).titulo +" - " + (mDataset.get(position).votos +""));
+                    holder.mTitle.setText(mDataset.get(position).titulo);
+                    holder.mSinger.setText(mDataset.get(position).cantor);
+                    holder.mVotes.setText("" + mDataset.get(position).votos);
 
 
-                }else {
+                } else {
                     mDataset.get(position).votos++;
                     MainActivity.setVoted(mDataset.get(position), true);
-                    holder.mTextView.setText(mDataset.get(position).cantor + " - "+ mDataset.get(position).titulo +" - " + (mDataset.get(position).votos +""));
+                    holder.mTitle.setText(mDataset.get(position).titulo);
+                    holder.mSinger.setText(mDataset.get(position).cantor);
+                    holder.mVotes.setText("" + mDataset.get(position).votos);
                 }
-//                Log.d("chamou o setcg","");
-//                notifyDataSetChanged();
             }
         });
 
-        holder.mTextView.setText(mDataset.get(position).cantor + " - "+mDataset.get(position).titulo +" - " + (mDataset.get(position).votos +""));
+        holder.mTitle.setText(mDataset.get(position).titulo);
+        holder.mSinger.setText(mDataset.get(position).cantor);
+        holder.mVotes.setText("" + mDataset.get(position).votos);
     }
 
 
     @Override
     public int getItemCount() {
+        if (mDataset == null) return 0;
         return mDataset.size();
     }
+
+
+    public void add(int position, Music item) {
+        mDataset.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public void remove(Music item) {
+        int position = mDataset.indexOf(item);
+        mDataset.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    @Override
+    public void removeAll() {
+        mDataset.clear();
+        notifyDataSetChanged();
+    }
+    @Override
+    public List<Music> getmDataset() {
+        return mDataset;
+    }
+
 }
