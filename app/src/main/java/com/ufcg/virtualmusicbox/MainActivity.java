@@ -225,9 +225,6 @@ public class MainActivity extends AppCompatActivity {
         searchResult.clear();
         Log.e("FILTER", string);
         String query = removerAcentos(string);
-//        ArrayList<Music> aux = mPlayList;
-//        mPlayList = aux;
-
 
         if (!string.equals("")) {
             for (Music item : reset) {
@@ -250,11 +247,6 @@ public class MainActivity extends AppCompatActivity {
             for (Music item : searchResult) {
                 Log.e("MUSIC ", item.getTitulo());
             }
-
-            // mPlayList = getmFilterPlayList();
-            //searchResult.removeAll(searchResult);
-
-            //replace_fragment();
 
 
 
@@ -284,20 +276,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static String removerAcentos(String str) {
         return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
-    }
-
-
-    private void replace_fragment() {
-
-        Fragment currentFragment = adapter.getItem(viewPager.getCurrentItem());
-        Log.e("REPLACE", "REPLACE FRAGMENT");
-        SearchFragment searchFragment = new SearchFragment();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.rv_recycler_view, searchFragment);
-
-        fragmentTransaction.commit();
     }
 
 

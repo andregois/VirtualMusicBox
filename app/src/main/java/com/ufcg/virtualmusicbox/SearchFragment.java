@@ -38,10 +38,7 @@ public class SearchFragment extends Fragment {
     }
 
     public void update() {
-        Log.e("UPDATEEEEEEE", "VAAAAAAAAAI");
         play = MainActivity.getmFilterPlayList();
-
-        for(Music i:play) Log.e("FILTERES LIST ", " CAGADAAAA" + i.getTitulo());
 
         MyAdapter adapter = new MyAdapter(play);
         rv.setAdapter(adapter);
@@ -50,12 +47,9 @@ public class SearchFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.e("UPDATEEEEEEE", "fora do if");
         if (isVisibleToUser) {
-            Log.e("UPDATEEEEEEE", "VAAAAAAAAAI");
             update();
         } else {
-            Log.e("UPDATEEEEEEE", "else");
 
         }
     }
